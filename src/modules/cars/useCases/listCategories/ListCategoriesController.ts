@@ -5,7 +5,7 @@ class ListCategoriesController {
     constructor(private listCategoryUseCase: ListCategoryUseCase  ) { }
     handle(req: Request, res: Response): Response {
         const all = this.listCategoryUseCase.execute()
-        return res.json(all)
+        return res.json(all).send()
     }
 }
 
