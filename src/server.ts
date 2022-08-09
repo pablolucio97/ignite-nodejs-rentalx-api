@@ -1,11 +1,12 @@
+import "reflect-metadata";
 import express, { json } from 'express';
 import swagger from 'swagger-ui-express'
 import { routes } from './routes';
 
 
 import swaggerJSON from '../src/swagger.json'
-import "reflect-metadata";
 import './database'
+import './shared/container'
 
 const app = express();
 

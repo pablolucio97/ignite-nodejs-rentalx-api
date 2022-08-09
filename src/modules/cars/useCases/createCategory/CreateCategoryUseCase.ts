@@ -1,13 +1,16 @@
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository"
+import {inject, injectable} from 'tsyringe'
 
 interface RequestDataProps{
     name: string
     description: string
 }
 
+@injectable()
 class CreateCategoryUseCase {
-
-    constructor(private categoriesRepository : ICategoriesRepository)    {}
+    constructor(
+        @inject('CategoriesRepository')
+        private categoriesRepository : ICategoriesRepository)    {}
 
    async  execute({name, description} : RequestDataProps) : Promise<void> {
       
