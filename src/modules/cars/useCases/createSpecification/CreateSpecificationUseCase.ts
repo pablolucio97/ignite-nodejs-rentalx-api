@@ -1,3 +1,4 @@
+import { AppError } from './../../../../errors/AppError';
 import { inject, injectable } from 'tsyringe'
 import { ISpecificationRepository } from "../../repositories/ISpecificationRepository"
 
@@ -18,7 +19,7 @@ class CreateSpecificationUseCase {
         const specificationAlreadyExists = await this.specificationsRepository.findByName(name)
 
         if (specificationAlreadyExists) {
-            throw new Error(`Specification ${name} already exists`)
+            throw new AppError(`Specification ${name} already exists`, 401)
         }
 
         await this.specificationsRepository.create({ name, description })
