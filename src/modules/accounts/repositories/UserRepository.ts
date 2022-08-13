@@ -12,12 +12,16 @@ class UserRepository implements IUsersRepository {
     }
 
     async create({
+        id,
+        avatar,
         name,
         email,
         password,
         driver_license
     }: ICreateUserDto): Promise<void> {
         const user = {
+            id,
+            avatar,
             name,
             email,
             driver_license,
@@ -29,6 +33,11 @@ class UserRepository implements IUsersRepository {
 
     async findByEmail(email: string): Promise<User> {
         const user = await this.repository.findOne({ email })
+        return user
+    }
+
+    async findById(id: string): Promise<User> {
+        const user = await this.repository.findOne({ id })
         return user
     }
 
