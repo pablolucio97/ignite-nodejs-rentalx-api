@@ -6,7 +6,7 @@ import { routes } from './routes';
 
 
 import swaggerJSON from '../../../swagger.json'
-import '../database'
+import '../typeorm'
 import '@shared/container'
 import { AppError } from "@shared/errors/AppError";
 
