@@ -6,10 +6,11 @@ import { routes } from './routes';
 
 
 import swaggerJSON from '../../../swagger.json'
-import '../typeorm'
+import createConnection from '../typeorm'
 import '@shared/container'
 import { AppError } from "@shared/errors/AppError";
 
+createConnection()
 const app = express();
 
 app.use(json())

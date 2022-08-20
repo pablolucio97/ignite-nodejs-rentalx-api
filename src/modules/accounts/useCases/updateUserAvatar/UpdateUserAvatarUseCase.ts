@@ -1,6 +1,6 @@
-import { inject } from "tsyringe";
-import { deleteFile } from "@utils/file";
 import { IUsersRepository } from "@modules/accounts/repositories/IUserRepository";
+import { deleteFile } from "@utils/file";
+import { inject } from "tsyringe";
 
 interface IRequest {
     user_id: string
@@ -26,4 +26,4 @@ class UpdateUserAvatarUseCase {
     }
 }
 
-export { UpdateUserAvatarUseCase }
+export { UpdateUserAvatarUseCase };
