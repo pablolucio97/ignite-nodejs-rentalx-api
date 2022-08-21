@@ -2,11 +2,14 @@ import {
     Column,
     CreateDateColumn,
     JoinColumn,
+    JoinTable,
+    ManyToMany,
     ManyToOne,
     PrimaryColumn
  } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid'
 import { Category } from './Category';
+import { Specification } from './Specification';
 
 class Car {
     @PrimaryColumn()
@@ -39,6 +42,14 @@ class Car {
 
     @Column()
     category_id: string;
+
+    @ManyToMany(() => Specification) // from this to Specification table
+    @JoinTable({
+        name: 'specifications_cars', // name of the relationship table
+        joinColumns: [{name: 'car_id'}] , // column of relationship table to refer this table
+        inverseJoinColumns: [{name: 'specification_id'}] // column of relationship table to refer the another table
+    })
+    specifications: Specification[]
 
     @CreateDateColumn()
     created_at: Date;

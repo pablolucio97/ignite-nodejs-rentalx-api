@@ -6,7 +6,7 @@ import { CategoriesRepository } from '@modules/cars/infra/typeorm/repositories/C
 import { SpecificationRepository } from '@modules/cars/infra/typeorm/repositories/SpecificationRepository'
 import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository'
 import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRepository'
-import { ISpecificationRepository } from '@modules/cars/repositories/ISpecificationRepository'
+import { ISpecificationRepository } from '@modules/cars/repositories/ISpecificationsRepository'
 import { IUsersRepository } from '@modules/accounts/repositories/IUserRepository'
 
 //each container is called when a class with inject with class name is instantiated
