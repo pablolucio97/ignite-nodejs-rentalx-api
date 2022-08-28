@@ -1,3 +1,4 @@
+import { AppError } from "@shared/errors/AppError"
 import { UsersRepositoryInMemory } from "../../repositories/in-memory-tests/UsersRepositoryInMemory"
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase"
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase"
@@ -41,7 +42,7 @@ describe('Authenticate user', () => {
                 email: 'some@gmail.com',
                 password: '123',
             }),
-        ).rejects.toBeInstanceOf(TypeError);
+        ).rejects.toEqual(new AppError('User does not exists'));
     });
 
     it('should not be able to authenticate a with wrong password', () => {

@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import { Car } from '@modules/cars/infra/typeorm/entities/Cars';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid'
 
 @Entity("rentals")
@@ -9,6 +10,10 @@ class Rental {
 
     @Column()
     car_id: string;
+
+    @ManyToOne(() => Car) //Many rentals for a single car
+    @JoinColumn({name: 'card_id'}) //current table foreignKey
+    car: Car //should be the type of relation
 
     @Column()
     user_id: string;
