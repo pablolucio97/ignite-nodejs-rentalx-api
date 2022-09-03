@@ -1,19 +1,27 @@
-import { Car } from '@modules/cars/infra/typeorm/entities/Cars';
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
-import { v4 as uuidv4 } from 'uuid'
+import { Car } from "@modules/cars/infra/typeorm/entities/Cars";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryColumn,
+    UpdateDateColumn,
+} from "typeorm";
+import { v4 as uuidV4 } from "uuid";
+
 
 @Entity("rentals")
 class Rental {
-
     @PrimaryColumn()
     id: string;
 
+    @ManyToOne(() => Car) //Many rentals for a single car
+    @JoinColumn({ name: 'card_id' }) //current table foreignKey
+    car: Car //should be the type of relation
+
     @Column()
     car_id: string;
-
-    @ManyToOne(() => Car) //Many rentals for a single car
-    @JoinColumn({name: 'card_id'}) //current table foreignKey
-    car: Car //should be the type of relation
 
     @Column()
     user_id: string;
@@ -25,7 +33,7 @@ class Rental {
     end_date: Date;
 
     @Column()
-    expect_return_date: Date;
+    expected_return_date: Date;
 
     @Column()
     total: number;
@@ -33,14 +41,16 @@ class Rental {
     @CreateDateColumn()
     created_at: Date;
 
-    @CreateDateColumn()
+    @UpdateDateColumn()
     updated_at: Date;
 
     constructor() {
         if (!this.id) {
-            this.id = uuidv4()
+            this.id = uuidV4();
         }
     }
 }
 
-export { Rental }
+export { Rental };
+
+

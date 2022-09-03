@@ -10,6 +10,7 @@ class UsersTokenRepository implements IUsersTokensRepository {
     constructor() {
         this.repository = getRepository(UserTokens);
     }
+   
     findByUserIdAndRefreshToken(user_id: string, refresh_token: string): Promise<UserTokens> {
         throw new Error("Method not implemented.");
     }
@@ -41,6 +42,11 @@ class UsersTokenRepository implements IUsersTokensRepository {
 
     async deleteById(user_id: string): Promise<void> {
         await this.repository.delete(user_id)
+    }
+
+    async findByRefreshToken(refresh_token: string): Promise<UserTokens> {
+        const userToken = await this.repository.findOne({refresh_token})
+        return userToken
     }
 
 }

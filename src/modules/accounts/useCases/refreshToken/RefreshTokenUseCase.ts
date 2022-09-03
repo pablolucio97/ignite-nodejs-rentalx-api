@@ -1,10 +1,10 @@
+import { sign, verify } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
-import { verify, sign } from "jsonwebtoken";
 
 import auth from "@config/auth";
-import { AppError } from "@shared/errors/AppError";
-import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { IUsersTokensRepository } from "@modules/accounts/repositories/IUserRepositoryTokens";
+import { AppError } from "@shared/errors/AppError";
+import { DateProvider } from "@shared/container/providers/DateProvider/implementations/DayJSDateProvider";
 
 interface IPayload {
   sub: string;
@@ -22,7 +22,7 @@ class RefreshTokenUseCase {
     @inject("UsersTokensRepository")
     private usersTokensRepository: IUsersTokensRepository,
     @inject("DateProvider")
-    private dateProvider: IDateProvider
+    private dateProvider: DateProvider
   ) {}
 
   async execute(token: string): Promise<ITokenResponse> {
