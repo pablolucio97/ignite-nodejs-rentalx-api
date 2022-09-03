@@ -1,5 +1,5 @@
 import { ResetPasswordController } from '@modules/accounts/useCases/resetPassword/ResetPasswordController'
-import { SendForgottenPasswordMailController } from '@modules/accounts/useCases/sendForgottenEmail/SenForgottenPasswordMailController'
+import { SendForgottenPasswordMailController } from '@modules/accounts/useCases/sendForgottenEmail/SendForgottenPasswordMailController'
 import { Router } from 'express'
 
 const passwordRoutes = Router()

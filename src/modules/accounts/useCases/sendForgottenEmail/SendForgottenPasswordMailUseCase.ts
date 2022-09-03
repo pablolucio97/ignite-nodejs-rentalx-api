@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { resolve } from 'path'
 
 @injectable()
-class SenForgottenPasswordMailUseCase {
+class SendForgottenPasswordMailUseCase {
 
     constructor(
         @inject('UsersRepository')
@@ -63,4 +63,4 @@ class SenForgottenPasswordMailUseCase {
     }
 }
 
-export { SenForgottenPasswordMailUseCase }
+export { SendForgottenPasswordMailUseCase }

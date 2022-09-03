@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
-import { SenForgottenPasswordMailUseCase } from './SenForgottenPasswordMailUseCase'
+import { SendForgottenPasswordMailUseCase } from './SendForgottenPasswordMailUseCase'
 
 class SendForgottenPasswordMailController {
     async handle(request: Request, response: Response): Promise<Response> {
@@ -8,7 +8,7 @@ class SendForgottenPasswordMailController {
         const { email } = request.body
 
         const sendForgottenPasswordMailUseCase = await container
-            .resolve(SenForgottenPasswordMailUseCase)
+            .resolve(SendForgottenPasswordMailUseCase)
 
         await sendForgottenPasswordMailUseCase.execute(email)
 
