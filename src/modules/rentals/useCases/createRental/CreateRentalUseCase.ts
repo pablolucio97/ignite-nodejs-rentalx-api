@@ -7,7 +7,7 @@ import { inject, injectable } from "tsyringe";
 interface IRequest {
     user_id: string;
     car_id: string;
-    expect_return_date: Date;
+    expected_return_date: Date;
 }
 
 const minHour = 24
@@ -23,7 +23,7 @@ class CreateRentalUseCase {
     async execute({
         car_id,
         user_id,
-        expect_return_date
+        expected_return_date
     }: IRequest): Promise<Rental> {
 
         const carUnvailable = await this.rentalsRepository.findByCarId(car_id)
@@ -39,7 +39,7 @@ class CreateRentalUseCase {
         }
 
         const dateNow = this.dateProvider.dateNow()
-        const compare = this.dateProvider.compareInHours(dateNow, expect_return_date)
+        const compare = this.dateProvider.compareInHours(dateNow, expected_return_date)
 
         if (compare < minHour) {
             throw new AppError('Invalid return time')
@@ -48,7 +48,7 @@ class CreateRentalUseCase {
         const rental = await this.rentalsRepository.create({
             user_id,
             car_id,
-            expect_return_date
+            expected_return_date
         })
 
         return rental

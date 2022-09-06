@@ -23,7 +23,7 @@ describe('Rentals', () => {
         const rental = await createRentalUseCase.execute({
             user_id: '12345',
             car_id: '12345',
-            expect_return_date: dayAdd24Hours,
+            expected_return_date: dayAdd24Hours,
         })
 
         console.log(rental)
@@ -38,13 +38,13 @@ describe('Rentals', () => {
                 await createRentalUseCase.execute({
                     user_id: '12345',
                     car_id: '12345',
-                    expect_return_date: dayAdd24Hours,
+                    expected_return_date: dayAdd24Hours,
                 })
 
                 await createRentalUseCase.execute({
                     user_id: '12345',
                     car_id: '12345',
-                    expect_return_date: dayAdd24Hours,
+                    expected_return_date: dayAdd24Hours,
                 })
             }).rejects.toBeInstanceOf(AppError)
         })
@@ -54,7 +54,7 @@ describe('Rentals', () => {
                 await createRentalUseCase.execute({
                     user_id: '12345',
                     car_id: '12345',
-                    expect_return_date: dayjs().toDate(),
+                    expected_return_date: dayjs().toDate(),
                 })
             
         })

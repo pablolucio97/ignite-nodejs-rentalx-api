@@ -6,7 +6,7 @@ import { CreateRentalUseCase } from './CreateRentalUseCase'
 class CreateRentalController {
     async handle(req: Request, res: Response): Promise<Response> {
 
-        const { expect_return_date, car_id } = req.body
+        const { expected_return_date, car_id } = req.body
         const { id } = req.user
 
         const createRentalUseCase = container.resolve(CreateRentalUseCase)
@@ -14,7 +14,7 @@ class CreateRentalController {
         const rental = await createRentalUseCase.execute({
             car_id,
             user_id: id,
-            expect_return_date,
+            expected_return_date,
         })
         return res.status(201).json(rental)
     }

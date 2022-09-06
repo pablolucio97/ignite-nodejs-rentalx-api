@@ -10,6 +10,7 @@ import swaggerJSON from '../../../swagger.json'
 import createConnection from '../typeorm'
 import '@shared/container'
 import { AppError } from "@shared/errors/AppError";
+import upload from "@config/upload";
 
 createConnection()
 const app = express();
@@ -17,6 +18,9 @@ const app = express();
 app.use(json())
 
 app.use('/api-docs', swagger.serve, swagger.setup(swaggerJSON));
+
+//reads the file content every time access the /avatar endpoint
+app.use('/avatar', express.static(`${upload.tmpFolder}/avatar`))
 
 app.use(routes)
 

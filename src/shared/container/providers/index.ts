@@ -3,13 +3,18 @@ import { IDateProvider } from './DateProvider/IDateProvider'
 import { DateProvider } from './DateProvider/implementations/DayJSDateProvider'
 import { IMailProvider } from './MailProvider/IMailProvider'
 import { EtherealMailProvider } from './MailProvider/implementations/EtherealMailProvider'
-import { LocalStorageProvider } from './StorageProvider/implementations/LocalStorageProvider'
+import { SESMailProvider } from './MailProvider/implementations/SESMailProvider'
 import { S3StorageProvider } from './StorageProvider/implementations/S3StorageProvider'
 import { IStorageProvider } from './StorageProvider/IStorageProvider'
 
 container.registerSingleton<IDateProvider>(
     "DateProvider",
     DateProvider
+)
+
+container.registerInstance<IMailProvider>(
+    "SESMailProvider",
+    new SESMailProvider()
 )
 
 container.registerInstance<IMailProvider>(

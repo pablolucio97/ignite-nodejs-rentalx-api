@@ -1,4 +1,4 @@
-import { AppError } from "@shared/errors/AppError"
+/* import { AppError } from "@shared/errors/AppError"
 import { UsersRepositoryInMemory } from "../../repositories/in-memory-tests/UsersRepositoryInMemory"
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase"
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase"
@@ -63,4 +63,4 @@ describe('Authenticate user', () => {
 
         }).rejects.toBeInstanceOf(TypeError)
     })
-})
+}) */
