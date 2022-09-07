@@ -1,11 +1,9 @@
 
 name: CI
 
-# Controls when the workflow will run
 on:
-
   push:
-    branches: [ main ]
+    branches: [ "main" ]
 
   workflow_dispatch:
 
@@ -15,14 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       
       - name: Setup Nodejs
         uses: actions/setup-node@v2
-      - with:
+        with:
           node-version: 12.x
           
-      - name: Install dependecies
+      - name: Install dependencies
         run: npm install
         
       - name: Build
